@@ -1,0 +1,13 @@
+{
+  "frameworks": [
+    "Git",
+    "Docker",
+    "Jenkins",
+    "GCP",
+    "Redis",
+    "PostgreSQL",
+    "SQLite",
+    "MockServer",
+    "Label Studio"
+  ]
+}
