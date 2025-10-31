@@ -1,0 +1,51 @@
+name: Build CV and Push PDF
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+
+      - name: Set up TeX Live + Python
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-luatex texlive-latex-extra texlive-fonts-recommended
+          python3 --version
+
+      - name: Build PDF
+        run: source build.sh
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CV
+          path: out/CV.pdf
+
+      - name: Push to external repository
+        env:
+          TARGET_REPO: ShayanHaghighi/portfolio
+          TARGET_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # clone the target repo
+          git clone https://x-access-token:${GITHUB_TOKEN}@github.com/$TARGET_REPO portfolio-website
+          cd portfolio-website
+
+          # copy the PDF
+          cp ../out/CV.pdf ./public/CV.pdf
+
+          # commit and push
+          git add ./public/CV.pdf
+          git commit -m "Update CV PDF (bot)"
+          git push origin $TARGET_BRANCH
