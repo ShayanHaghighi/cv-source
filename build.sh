@@ -1,6 +1,6 @@
 mkdir -p out
 
-/usr/local/bin/python3 tools/create_sections.py
+python tools/create_sections.py
 
 env --chdir=src -S lualatex -file-line-error -interaction=nonstopmode -synctex=1 -output-format=pdf -output-directory=../out CV.tex
 
