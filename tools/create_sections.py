@@ -1,14 +1,16 @@
 import yaml
+from os import getcwd
 
-INPUT_FILE = "data/skills.yaml"
-OUTPUT_DIR = "sections/skills/parts"
+CWD = getcwd()
+INPUT_FILE = f"{CWD}/assets/skills.yaml"
+OUTPUT_DIR = f"{CWD}/src/sections/skills/parts"
 
 def format_list(k,l:list[str]):
     s = f"\\textbf{{{k.capitalize()}:}}  "
     s += ", ".join(l)
     return s + " \\\\"
 
-with open("data/skills.yaml") as stream:
+with open("assets/skills.yaml") as stream:
     try:
         obj = yaml.safe_load(stream)
 

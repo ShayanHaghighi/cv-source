@@ -20,6 +20,11 @@ jobs:
           sudo apt-get install -y texlive-luatex texlive-latex-extra texlive-fonts-recommended
           python3 --version
 
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 #install the python needed
+
       - name: Build PDF
         run: source build.sh
 

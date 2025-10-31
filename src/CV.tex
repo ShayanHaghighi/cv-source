@@ -1,26 +1,29 @@
 \documentclass[11pt,a4paper]{article}
 
-\input{commands/experience}
-\usepackage{fontspec}
-\setmainfont{Times New Roman}
 \usepackage[margin=0.5in]{geometry}
+\usepackage[colorlinks=false]{hyperref}
+\usepackage{graphicx}
+\usepackage{fontspec}
+\usepackage{xcolor}
+
+\setmainfont{Times New Roman}
+\newcommand{\blueuline}[1]{\textcolor{blue}{\uline{#1}}}
+\pagestyle{empty}
+
+\input{commands/experience}
 \input{commands/header}
 \input{commands/utils}
 
-\usepackage{xcolor} % for custom colors
-\newcommand{\blueuline}[1]{\textcolor{blue}{\uline{#1}}}
-
-\pagestyle{empty}
-\usepackage{graphicx}
-\usepackage[colorlinks=false]{hyperref}
-\usepackage{luacode}
-\AtBeginDocument{%
+% define url colors
+\AtBeginDocument{
     \hypersetup{
         urlcolor=blue,
         urlbordercolor=blue,
         pdfborder={0 0 1},
         pdfborderstyle={/S/U/W 0}
-    }}
+    }
+}
+
 \begin{document}
 
     \input{sections/title}
@@ -29,7 +32,5 @@
     \input{sections/workExperience/workExp}
     \input{sections/projects/projects}
     \input{sections/skills/skills}
-
-% Or a clickable link with blue underline
 
 \end{document}
