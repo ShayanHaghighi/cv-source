@@ -1,0 +1,37 @@
+languages:
+  - Java
+  - Python
+  - HTML5
+  - CSS3
+  - JavaScript
+  - TypeScript
+  - SQL
+  - Haskell
+  - C
+  - C\#
+frameworks/libraries:
+  - Spring Boot
+  - Cucumber
+  - React
+  - Angular
+  - Flask
+  - PyTorch
+  - OpenCV
+  - Next.js
+  - Three.js
+tools:
+  - Git
+  - Docker
+  - Jenkins
+  - GCP
+  - Redis
+  - PostgreSQL
+  - SQLite
+  - MockServer
+  - Label Studio
+other:
+  - Video editing (DaVinci Resolve)
+  - Photoshop
+  - Persian (Native Fluent)
+  - Volleyball
+  - Football (Man U)
