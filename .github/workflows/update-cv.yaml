@@ -54,7 +54,7 @@ jobs:
         env:
           TARGET_REPO: ShayanHaghighi/portfolio
           TARGET_BRANCH: master
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          token: ${{ secrets.CV_UPDATER }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
