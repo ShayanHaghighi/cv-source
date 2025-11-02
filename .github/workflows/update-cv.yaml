@@ -50,18 +50,19 @@ jobs:
           name: CV
           path: out/CV.pdf
 
-      - name: Push to external repository
-        env:
-          TARGET_REPO: ShayanHaghighi/portfolio
-          TARGET_BRANCH: master
+      - name: Checkout TARGET repository
+        uses: actions/checkout@v4
+        with:
+          repository: ShayanHaghighi/portfolio
           token: ${{ secrets.CV_UPDATER }}
+          path: portfolio
+
+      - name: Push to external repository
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          # clone the target repo
-          git clone https://x-access-token:${GITHUB_TOKEN}@github.com/$TARGET_REPO portfolio-website
-          cd portfolio-website
+          cd portfolio
 
           # copy the PDF
           cp ../out/CV.pdf ./public/CV.pdf
@@ -69,4 +70,4 @@ jobs:
           # commit and push
           git add ./public/CV.pdf
           git commit -m "Update CV PDF (bot)"
-          git push origin $TARGET_BRANCH
+          git push
