@@ -5,12 +5,12 @@ CWD = getcwd()
 INPUT_FILE = f"{CWD}/assets/skills.yaml"
 OUTPUT_DIR = f"{CWD}/src/sections/skills/parts"
 
-def format_list(k,l:list[str]):
-    s = f"\\textbf{{{k.capitalize()}:}}  "
+def format_list(key:str, l:list[str]):
+    s = f"\\textbf{{{key.capitalize()}:}}  "
     s += ", ".join(l)
     return s + " \\\\"
 
-with open("assets/skills.yaml") as stream:
+with open(INPUT_FILE) as stream:
     try:
         obj = yaml.safe_load(stream)
 
